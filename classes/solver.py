@@ -34,7 +34,7 @@ def solve(special_char, chars):
     t0 = time.clock()
     #print("commencing dictionary loading")
     
-    root = load_dictionary()
+    root = load_dictionary('/usr/share/dict/words')
     
     t1 = time.clock()
     delta = str(t1 - t0)
