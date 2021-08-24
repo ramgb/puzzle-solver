@@ -3,6 +3,8 @@ import time
 from node import Node
 
 MAX_SIZE = 4
+DICT_1 = '/usr/share/dict/words'
+DICT_2 = 'dicts/words_alpha.txt'
 
 def load_dictionary(dictionary_file):
     root = Node(None, False)
@@ -46,7 +48,7 @@ def solve(special_char, chars):
     
     print("*** commencing dictionary loading")
     
-    root = load_dictionary('/usr/share/dict/words')
+    root = load_dictionary(DICT_2)
     
     t1 = time.clock()
     delta = str(t1 - t0)
