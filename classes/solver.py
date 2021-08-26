@@ -24,11 +24,11 @@ def load_dictionary(dictionary_file):
 def solve_helper(root, special_char, chars, cur_str, used_special_character, writer):
     # boundary condition hitting a leaf
     if not root.childset:
-        if used_special_character and len(cur_str) > MAX_SIZE:
+        if used_special_character and len(cur_str) >= MAX_SIZE:
             writer.write(cur_str + "\n")
         return
     # another condition
-    if root.is_word_end and used_special_character and len(cur_str) > MAX_SIZE:
+    if root.is_word_end and used_special_character and len(cur_str) >= MAX_SIZE:
         writer.write(cur_str + "\n")
     
     for child_value, child_node in root.childset.items():
