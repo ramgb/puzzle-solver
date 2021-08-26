@@ -56,7 +56,7 @@ def solve(special_char, chars):
     print("*** dictionary loading completed in " + delta + "seconds")
     print("*** Starting Solver")
     
-    writer = open(str(ct) + ".txt", "w")
+    writer = open(str(ct) + "_" + chars +".txt", "w")
     solve_helper(root, special_char, chars, '', False, writer)
     writer.close()
     
