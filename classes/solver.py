@@ -41,7 +41,7 @@ def solve_helper(root, special_char, chars, cur_str, used_special_character, wri
                 used_special_character or child_value == special_char,
                 writer) 
 
-def solve(special_char, chars):
+def solve(chars):
     ct = datetime.datetime.now()
 
     t0 = time.clock()
@@ -56,7 +56,8 @@ def solve(special_char, chars):
     print("*** dictionary loading completed in " + delta + "seconds")
     print("*** Starting Solver")
     
-    writer = open(str(ct) + "_" + chars +".txt", "w")
+    writer = open("solutions/" + str(ct) + "_" + chars +".txt", "w")
+    special_char = chars[0]
     solve_helper(root, special_char, chars, '', False, writer)
     writer.close()
     
