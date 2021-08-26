@@ -1,5 +1,5 @@
 import argparse
-from classes import solver
+from classes.spellingbee import solver
 
 if __name__=="__main__":
     parser = argparse.ArgumentParser("solver")
