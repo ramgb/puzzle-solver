@@ -1,2 +1,2 @@
-# spelling-bee
-spelling bee solver (NYT crossword app)
+# puzzle solver
+Solver for various puzzles/games IRL
