@@ -1,0 +1,3 @@
+run:
+python3 main.py <num_queens>
+where num_queens is an integer value for number of queens (and also the dimension of the board)
