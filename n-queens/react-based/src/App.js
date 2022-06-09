@@ -1,11 +1,10 @@
-import './App.css';
-
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-      <h1> N - Queens (React-based) </h1>
-      </header>
+      <h1> N - Queens Visualizer </h1>
+      <label> Enter number of queens : </label>
+      <input type="text" />
+      <button> Render Board </button>
     </div>
   );
 }
