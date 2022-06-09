@@ -18,7 +18,6 @@ function App() {
   function handleIntegerValue(e) {
     if (!Number(e.target.value)) {
       alert("Only numbers are valid")
-      e.target.value = null
     }
   }
 
