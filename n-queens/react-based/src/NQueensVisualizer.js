@@ -1,14 +1,37 @@
 import React, { Component } from 'react'
+import Square from './Square'
 
-// 1. Render the board with number of squares
-// 2. Create a state variable with set of queens placed
-// 3. Allow queens to be placed in each square
-// 4. Re-render when each queen is placed
+// 1. Implement Rendering in the Square Class
+// 2. Allow queens to be placed in each square
+// 3. Re-render when each queen is placed
  
-export default class NQueensVisualizer extends Component {
+class NQueensVisualizer extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      width : 100,
+      colors : ["#000000", "#FFFFFF"],
+      num_queens_placed: 0
+    }
+  }
+
   render() {
+    const numSquaresConst = Number(this.props.numSquares)
     return (
-      <div>N-Queens Visualizer {this.props.numSquares} </div>
+      <>
+      { Array.apply(0, Array(numSquaresConst * numSquaresConst)).map((_, i) => (
+        <Square
+          key = {i}
+          row={Math.floor(i / numSquaresConst)}
+          column={i % numSquaresConst}
+          size={this.state.width}
+          color = {this.state.colors[i % 2]}
+          />))
+      }
+      </>
     )
   }
 }
+
+export default NQueensVisualizer;
