@@ -1,13 +1,4 @@
-import argparse
-
-def print_queens(arr_queens):
-    for row in range(len(arr_queens)):
-        for col in range(len(arr_queens)):
-            if arr_queens[row][col] > 0:
-                print('Q ', end='')
-            else:
-                print('- ', end='')
-        print('')
+import copy
 
 def fill_attacking_squares(arr_queens, row, col, should_undo):
     multiplier = -1 if should_undo else 1
@@ -36,10 +27,10 @@ def fill_attacking_squares(arr_queens, row, col, should_undo):
     for tuple in diagonal_tuples:
         arr_queens[tuple[0]][tuple[1]] -= 1 * multiplier
     
-def solve_helper(arr_queens, queen_ctr):
+def solve_helper(arr_queens, queen_ctr, solutions):
     #boundary condition
     if (queen_ctr > len(arr_queens)):
-        print_queens(arr_queens)
+        solutions.append(copy.deepcopy(arr_queens))
         return
     
     for col in range(len(arr_queens)):
@@ -50,7 +41,7 @@ def solve_helper(arr_queens, queen_ctr):
             arr_queens[queen_ctr-1][col] = queen_ctr
             
             # place next queen
-            solve_helper(arr_queens, queen_ctr + 1)
+            solve_helper(arr_queens, queen_ctr + 1, solutions)
             
             # undo neighbor fill
             fill_attacking_squares(arr_queens, queen_ctr-1, col, True)
@@ -62,16 +53,8 @@ def solve_helper(arr_queens, queen_ctr):
 def solve(num_queens):
     """ method to solve n-queens and print successful configurations """
     arr_queens = [[0 for i in range(num_queens)] for j in range(num_queens)]
-    solve_helper(arr_queens, 1)
-
-
-if __name__=="__main__":
-    parser = argparse.ArgumentParser("solver")
-    parser.add_argument("queens", help="number of queens a.k.a the dimensions of the board", type=int)
-
-    num_queens = parser.parse_args().queens
-
-    if not num_queens:
-        raise Exception('Input value for queens should not be empty')
+    solutions = []
     
-    solve(num_queens)
+    solve_helper(arr_queens, 1, solutions)
+    
+    return solutions
