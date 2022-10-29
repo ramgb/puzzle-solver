@@ -1,6 +1,6 @@
 import datetime
 import time
-from node import Node
+from classes.spellingbee.node import Node
 
 MAX_SIZE = 4
 DICT_1 = '/usr/share/dict/words'
@@ -8,7 +8,7 @@ DICT_2 = 'dicts/words_alpha.txt'
 
 def load_dictionary(dictionary_file):
     root = Node(None, False)
-    t0 = time.clock()
+    t0 = time.perf_counter()
     with open(dictionary_file, "r") as reader:
         line = reader.readline()
         while line != '':
@@ -44,13 +44,13 @@ def solve_helper(root, special_char, chars, cur_str, used_special_character, wri
 def solve(chars):
     ct = datetime.datetime.now()
 
-    t0 = time.clock()
+    t0 = time.perf_counter()
     
     print("*** commencing dictionary loading")
     
     root = load_dictionary(DICT_2)
     
-    t1 = time.clock()
+    t1 = time.perf_counter()
     delta = str(t1 - t0)
     
     print("*** dictionary loading completed in " + delta + "seconds")
@@ -61,7 +61,7 @@ def solve(chars):
     solve_helper(root, special_char, chars, '', False, writer)
     writer.close()
     
-    t2 = time.clock()
+    t2 = time.perf_counter()
     delta = str(t2 - t1)
     
     print("**** Solved in " + delta + "seconds")
