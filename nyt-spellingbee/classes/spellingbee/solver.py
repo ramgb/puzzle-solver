@@ -1,25 +1,9 @@
 import datetime
 import time
-from classes.spellingbee.node import Node
+from classes.db.node import Node
+from classes.db.dict_loader import load_dictionary
 
 MAX_SIZE = 4
-DICT_1 = '/usr/share/dict/words'
-DICT_2 = 'dicts/words_alpha.txt'
-
-def load_dictionary(dictionary_file):
-    root = Node(None, False)
-    t0 = time.perf_counter()
-    with open(dictionary_file, "r") as reader:
-        line = reader.readline()
-        while line != '':
-            newRoot = root
-            word = line.rstrip()
-            for char in word[:-1]:
-                curNode = newRoot.__add_child__(Node(char, False))
-                newRoot = curNode
-            newRoot.__add_child__(Node(word[-1], True))
-            line = reader.readline()
-    return root
 
 def solve_helper(root, special_char, chars, cur_str, used_special_character, writer):
     # boundary condition hitting a leaf
@@ -48,7 +32,7 @@ def solve(chars):
     
     print("*** commencing dictionary loading")
     
-    root = load_dictionary(DICT_2)
+    root = load_dictionary()
     
     t1 = time.perf_counter()
     delta = str(t1 - t0)
