@@ -4,7 +4,7 @@ class Node:
         self.value = value
         self.childset = {}
         self.parent = None
-        self.valueset = {value}
+        self.valueset = {value} # Can this be deleted ? 
         self.is_word_end = is_word_end
         
     def __add_child__(self, child):

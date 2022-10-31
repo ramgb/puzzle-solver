@@ -7,6 +7,8 @@ DICT_2 = 'dicts/words_alpha.txt'
 PICKLE_DICT_1='dicts/words.pkl'
 PICKLE_DICT_2='dicts/alpha.pkl'
 
+# TODO(ramgb): change this to an interface for db lookups
+
 def save_dictionary(dictionary_file, pickle_file_name):
     root = Node(None, False)
     t0 = time.perf_counter()

@@ -3,16 +3,17 @@ import time
 from classes.db.node import Node
 from classes.db.dict_loader import load_dictionary
 
-MAX_SIZE = 4
+MIN_SIZE = 4
 
+# TODO(ramgb): change this to an interface for solution types
 def solve_helper(root, special_char, chars, cur_str, used_special_character, writer):
     # boundary condition hitting a leaf
     if not root.childset:
-        if used_special_character and len(cur_str) >= MAX_SIZE:
+        if used_special_character and len(cur_str) >= MIN_SIZE:
             writer.write(cur_str + "\n")
         return
     # another condition
-    if root.is_word_end and used_special_character and len(cur_str) >= MAX_SIZE:
+    if root.is_word_end and used_special_character and len(cur_str) >= MIN_SIZE:
         writer.write(cur_str + "\n")
     
     for child_value, child_node in root.childset.items():
