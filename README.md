@@ -1,2 +1,2 @@
 # puzzle solver
-Solver for various puzzles/games IRL
+Solver for NYT spelling bee app
